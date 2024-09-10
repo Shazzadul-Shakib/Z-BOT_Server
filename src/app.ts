@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { appRouter } from "./router";
 
 export const app = express();
 
@@ -11,6 +12,9 @@ app.use(
     credentials: true,
   })
 );
+
+// ----- Routers ----- //
+app.use("/api/v1", appRouter);
 
 
 // ---- server in web ---- //
