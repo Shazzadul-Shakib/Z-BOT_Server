@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { app } from "./app";
 import { config } from "./config";
 import { Server } from "http";
@@ -8,6 +9,8 @@ const main = async () => {
   server = app.listen(config.PORT, () => {
     console.log(`Z-BOT Server is running to the port ${config.PORT}`);
   });
+
+  await mongoose.connect(config.MONGODB_URI!);
 };
 
 main();
