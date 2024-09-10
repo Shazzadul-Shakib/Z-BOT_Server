@@ -5,7 +5,7 @@ const registerUser=tryCatch(async(req,res)=>{
     const result = await authServices.regiserUserService(req.body);
 
     if(result){
-        res.send(result.payload);
+        res.send(result);
     }
 
 })
