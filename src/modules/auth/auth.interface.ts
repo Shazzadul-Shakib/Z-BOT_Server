@@ -4,6 +4,6 @@ export type TRegister={
     _id:Schema.Types.ObjectId;
     userName:string;
     userEmail:string;
-    userPassword:string;
+    password:string;
     verified?:boolean;
 }
