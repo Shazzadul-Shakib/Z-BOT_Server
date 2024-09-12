@@ -6,4 +6,5 @@ export type TRegister={
     userEmail:string;
     password:string;
     verified?:boolean;
+    token?:string;
 }
