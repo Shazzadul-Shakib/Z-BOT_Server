@@ -13,6 +13,16 @@ const addProject = tryCatch(async (req, res) => {
   }
 });
 
+// get all projects for individual users
+const getProjects = tryCatch(async (req, res) => {
+  const projectOwnerId = req.params.projectOwnerId as string;
+  const result = await projectService.getAllProjects(projectOwnerId);
+  if (result) {
+    res.send(result);
+  }
+});
+
 export const projectController = {
   addProject,
+  getProjects,
 };
