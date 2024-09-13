@@ -33,7 +33,7 @@ export const loginUserService = async (payload: TRegister) => {
   }
   // create jwt token
   const token = jwt.sign({ userEmail }, secret, {
-    expiresIn: "10s",
+    expiresIn: "30s",
   });
 
   // If match, return success

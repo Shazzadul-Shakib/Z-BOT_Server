@@ -46,7 +46,18 @@ const loginUser = tryCatch(async (req, res) => {
   return res.status(400).send({ message: result.message });
 });
 
+// Logout user and clear cookie
+const logoutUser = tryCatch(async (_, res) => {
+  res.clearCookie("access_token");
+  return SendSuccessResponse(res, {
+    status: 200,
+    message: "User Logout successful!",
+    data: {},
+  });
+});
+
 export const authController = {
   registerUser,
   loginUser,
+  logoutUser,
 };

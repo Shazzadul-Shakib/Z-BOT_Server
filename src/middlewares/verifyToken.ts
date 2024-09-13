@@ -10,7 +10,7 @@ const verifyToken = (
   res: Response,
   next: NextFunction
 ): void => {
-  const token = req.cookies?.access_token || req.headers["authorization"];
+  const token = req.cookies?.access_token;
 
   if (!token) {
     res.status(401).json({ message: "Unauthorized access" });
