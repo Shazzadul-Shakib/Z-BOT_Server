@@ -16,6 +16,12 @@ const addProject = tryCatch(async (req, res) => {
 // get all projects for individual users
 const getProjects = tryCatch(async (req, res) => {
   const projectOwnerId = req.params.projectOwnerId as string;
+
+  //Prevent users from accessing data belonging to other users.
+  if (projectOwnerId !== req?.user?.userId) {
+    return res.status(403).json({ message: "Forbidden access" });
+  }
+
   const result = await projectService.getAllProjects(projectOwnerId);
   if (result) {
     res.send(result);

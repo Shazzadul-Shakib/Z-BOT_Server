@@ -5,7 +5,6 @@ import { User } from "../auth.model";
 import jwt from "jsonwebtoken";
 
 export const loginUserService = async (payload: TRegister) => {
-  console.log(payload);
   const { userEmail, password } = payload;
 
   // Find user in the collection
@@ -18,6 +17,8 @@ export const loginUserService = async (payload: TRegister) => {
 
   //   extract user info
   const { password: hashedPassword, ...loggedUser } = user.toObject();
+  const {_id}=loggedUser;
+  const userId=_id.toString();
 
   // Compare password
   const isMatch = await comparePassword(password, hashedPassword);
@@ -32,7 +33,7 @@ export const loginUserService = async (payload: TRegister) => {
     throw new Error("ACCESS_TOKEN_SECRET is not defined");
   }
   // create jwt token
-  const token = jwt.sign({ userEmail }, secret, {
+  const token = jwt.sign({ userId }, secret, {
     expiresIn: "30s",
   });
 
