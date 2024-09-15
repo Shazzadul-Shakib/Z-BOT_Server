@@ -6,3 +6,4 @@ export const projectRouter=Router();
 
 projectRouter.post("/",projectController.addProject);
 projectRouter.get("/:projectOwnerId",verifyToken,projectController.getProjects);
+projectRouter.post("/features",projectController.addNewFeature);

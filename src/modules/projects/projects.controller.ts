@@ -28,7 +28,20 @@ const getProjects = tryCatch(async (req, res) => {
   }
 });
 
+// add new feature to the project
+const addNewFeature=tryCatch(async(req,res)=>{
+  const result= await projectService.addNewFeature(req.body);
+  if(result.success){
+    return SendSuccessResponse(res,{
+      status:200,
+      message:result.message,
+      data:result.result
+    })
+  }
+})
+
 export const projectController = {
   addProject,
   getProjects,
+  addNewFeature,
 };

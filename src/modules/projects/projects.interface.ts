@@ -6,3 +6,9 @@ export type TProject={
     projectDescription:string;
     projectOwnerId:string;
 }
+
+export type TFeature={
+    _id:string;
+    featureName:string;
+    projectId:string;
+}

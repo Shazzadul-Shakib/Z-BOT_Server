@@ -17,8 +17,8 @@ export const loginUserService = async (payload: TRegister) => {
 
   //   extract user info
   const { password: hashedPassword, ...loggedUser } = user.toObject();
-  const {_id}=loggedUser;
-  const userId=_id.toString();
+  const { _id } = loggedUser;
+  const userId = _id.toString();
 
   // Compare password
   const isMatch = await comparePassword(password, hashedPassword);
@@ -34,7 +34,7 @@ export const loginUserService = async (payload: TRegister) => {
   }
   // create jwt token
   const token = jwt.sign({ userId }, secret, {
-    expiresIn: "30s",
+    expiresIn: "30d",
   });
 
   // If match, return success
