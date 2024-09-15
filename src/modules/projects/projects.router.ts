@@ -9,3 +9,4 @@ projectRouter.get("/:projectOwnerId",verifyToken,projectController.getProjects);
 projectRouter.post("/features",projectController.addNewFeature);
 projectRouter.get("/features/:projectId",projectController.getAllFeatures);
 projectRouter.post("/features/tasks",projectController.addNewTask);
+projectRouter.get("/features/tasks/:projectId/:featureId",projectController.getAllTasks);

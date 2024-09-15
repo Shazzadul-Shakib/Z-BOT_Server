@@ -67,10 +67,26 @@ const addNewTask = tryCatch(async (req, res) => {
   }
 });
 
+// Get all tasks for the feature of the project
+const getAllTasks = tryCatch(async (req, res) => {
+  const result = await projectService.getAllTasks(
+    req.params.projectId,
+    req.params.featureId
+  );
+  if (result.success) {
+    return SendSuccessResponse(res, {
+      status: 200,
+      message: result.message,
+      data: result.result,
+    });
+  }
+});
+
 export const projectController = {
   addProject,
   getProjects,
   addNewFeature,
   getAllFeatures,
   addNewTask,
+  getAllTasks,
 };
