@@ -20,3 +20,4 @@ export type TTask={
     projectId:string;
     completed:boolean
 }
+export type TaskPayload = Pick<{ completed: boolean }, "completed">;

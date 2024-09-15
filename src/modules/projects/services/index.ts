@@ -4,6 +4,7 @@ import { addNewTask } from "./addTask";
 import { getAllFeatures } from "./getAllFeatures";
 import { getAllTasks } from "./getAllTasks";
 import { getAllProjects } from "./getProjects";
+import { updateStateCompletionTask } from "./updateStateCompletionTask";
 
 export const projectService = {
   addProjectService,
@@ -12,4 +13,5 @@ export const projectService = {
   getAllFeatures,
   addNewTask,
   getAllTasks,
+  updateStateCompletionTask,
 };

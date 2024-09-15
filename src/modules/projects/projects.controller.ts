@@ -82,6 +82,20 @@ const getAllTasks = tryCatch(async (req, res) => {
   }
 });
 
+// Update state of completion of the task
+const updateStateCompletionTask = tryCatch(async (req, res) => {
+  const { projectId, featureId, taskId } = req.params;
+  const result = await projectService.updateStateCompletionTask(
+    req.body,
+    projectId,
+    featureId,
+    taskId
+  );
+  if(result){
+    return res.send("ok");
+  }
+});
+
 export const projectController = {
   addProject,
   getProjects,
@@ -89,4 +103,5 @@ export const projectController = {
   getAllFeatures,
   addNewTask,
   getAllTasks,
+  updateStateCompletionTask,
 };
