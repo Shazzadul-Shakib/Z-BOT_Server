@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { TFeature, TProject } from "./projects.interface";
+import { TFeature, TProject, TTask } from "./projects.interface";
 
 // Project Schema
 const ProjectSchema = new Schema<TProject>({
@@ -17,3 +17,13 @@ const FeatureSchema = new Schema<TFeature>({
 });
 
 export const Feature = model("features", FeatureSchema);
+
+// Task Schema
+const TaskSchema = new Schema<TTask>({
+  task: { type: String, required: true },
+  featureId: { type: String, required: true },
+  projectId: { type: String, required: true },
+  completed: { type: Boolean, required: true },
+});
+
+export const Task = model("tasks", TaskSchema);
