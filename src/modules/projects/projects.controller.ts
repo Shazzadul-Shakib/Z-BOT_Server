@@ -91,8 +91,12 @@ const updateStateCompletionTask = tryCatch(async (req, res) => {
     featureId,
     taskId
   );
-  if(result){
-    return res.send("ok");
+  if(result.success){
+    return SendSuccessResponse(res,{
+      status:200,
+      message:result.message,
+      data:result.result
+    });
   }
 });
 

@@ -7,7 +7,7 @@ export const updateStateCompletionTask = async (
   featureId: string,
   TaskId: string
 ) => {
-  const {completed}=payload;
+  const { completed } = payload;
   const result = await Task.findOneAndUpdate(
     {
       projectId,
@@ -23,6 +23,7 @@ export const updateStateCompletionTask = async (
       new: true,
     }
   );
+  
   return {
     success: true,
     message: "State changed of task completion successfully",
