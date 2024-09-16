@@ -101,6 +101,20 @@ const updateStateCompletionTask = tryCatch(async (req, res) => {
   }
 });
 
+// Delete task 
+const deleteTask=tryCatch(async(req,res)=>{
+  const {projectId,featureId,taskId}=req.params;
+  const result = await projectService.deleteTask(projectId,featureId,taskId);
+
+  if(result.success){
+    return SendSuccessResponse(res,{
+      status:200,
+      message:result.message,
+      data:[]
+    })
+  }
+})
+
 export const projectController = {
   addProject,
   getProjects,
@@ -109,4 +123,5 @@ export const projectController = {
   addNewTask,
   getAllTasks,
   updateStateCompletionTask,
+  deleteTask,
 };
