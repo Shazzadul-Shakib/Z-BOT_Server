@@ -5,6 +5,7 @@ const WalletSchema = new Schema<TWallet>(
   {
     walletName: { type: String, required: true },
     walletBalance: { type: Number, required: true },
+    walletOwnerId: { type: String, required: true },
   },
   {
     timestamps: true,
