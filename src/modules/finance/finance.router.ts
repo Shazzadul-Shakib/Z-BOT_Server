@@ -10,3 +10,4 @@ financeRouter.get("/expenses/:ownerUserId", financeController.getAllExpenses);
 financeRouter.get("/savings/:ownerUserId", financeController.getAllSavings);
 financeRouter.post("/debts/:ownerUserId", financeController.addNewDebt);
 financeRouter.get("/debts/:ownerUserId", financeController.getAllDebts);
+financeRouter.patch("/debts/:ownerUserId/:debtId", financeController.updateDebtPaidStatus);

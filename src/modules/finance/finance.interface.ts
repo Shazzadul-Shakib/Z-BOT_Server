@@ -20,11 +20,13 @@ export type TExpense = {
   ownerUserId: string;
 };
 
-export type TDebt={
-  _id:Schema.Types.ObjectId;
-  debtOwnerName:string;
-  debtDate:string;
-  debtAmount:number;
-  debtPaid:boolean;
-  ownerUserId:string;
-}
+export type TDebt = {
+  _id: Schema.Types.ObjectId;
+  debtOwnerName: string;
+  debtDate: string;
+  debtAmount: number;
+  debtPaid: boolean;
+  ownerUserId: string;
+};
+
+export type DebtPayload = Pick<{ debtPaid: boolean }, "debtPaid">;

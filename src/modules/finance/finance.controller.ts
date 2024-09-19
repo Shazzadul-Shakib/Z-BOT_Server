@@ -90,16 +90,31 @@ const addNewDebt = tryCatch(async (req, res) => {
 
 // Get all debts
 const getAllDebts = tryCatch(async (req, res) => {
-  // const { ownerUserId } = req.params;
-  // const result = await financeServices.getAllDebts(ownerUserId);
+  const { ownerUserId } = req.params;
+  const result = await financeServices.getAllDebts(ownerUserId);
 
-  // if (result.success) {
-  //   return SendSuccessResponse(res, {
-  //     status: 200,
-  //     message: result.message,
-  //     data: result.result,
-  //   });
-  });
+  if (result.success) {
+    return SendSuccessResponse(res, {
+      status: 200,
+      message: result.message,
+      data: result.result,
+    });
+  }
+});
+
+// Update debt paid status
+const updateDebtPaidStatus = tryCatch(async (req, res) => {
+  const { ownerUserId, debtId } = req.params;
+  const result = await financeServices.updateDebtPaidStatus(ownerUserId,debtId,req.body);
+
+  if (result.success) {
+    return SendSuccessResponse(res, {
+      status: 200,
+      message: result.message,
+      data: result.result,
+    });
+  }
+});
 
 export const financeController = {
   addWallet,
@@ -108,5 +123,6 @@ export const financeController = {
   getAllExpenses,
   getAllSavings,
   addNewDebt,
-  getAllDebts
+  getAllDebts,
+  updateDebtPaidStatus,
 };
