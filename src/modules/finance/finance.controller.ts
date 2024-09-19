@@ -12,7 +12,7 @@ const addWallet = tryCatch(async (req, res) => {
       message: result.message,
       data: result.result,
     });
-  }
+  } 
 });
 
 // Get all wallet
@@ -31,20 +31,21 @@ const getAllWallet = tryCatch(async (req, res) => {
 });
 
 // Add new expense
-const addNewExpense=tryCatch(async(req,res)=>{
-  const {ownerUserId}=req.params;
-  const result = await financeServices.addNewExpense(ownerUserId,req.body);
-  
-  if(result.success){
-    return SendSuccessResponse(res,{
-      status:200,
-      message:result.message,
-      data:result.result
-    })
-  }
-  
+const addNewExpense = tryCatch(async (req, res) => {
+  const { ownerUserId } = req.params;
+  const result = await financeServices.addNewExpense(ownerUserId, req.body);
 
-})
+  if (result.success) {
+    return SendSuccessResponse(res, {
+      status: 200,
+      message: result.message,
+      data: result.result,
+    });
+  } 
+  if(!result.success) {
+    return res.send({message:result.message});
+  }
+});
 
 export const financeController = {
   addWallet,
