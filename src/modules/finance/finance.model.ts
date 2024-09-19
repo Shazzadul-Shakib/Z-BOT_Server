@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { TWallet } from "./finance.interface";
+import { TExpense, TWallet } from "./finance.interface";
 
 const WalletSchema = new Schema<TWallet>(
   {
@@ -13,3 +13,15 @@ const WalletSchema = new Schema<TWallet>(
 );
 
 export const Wallet = model("wallets", WalletSchema);
+
+const ExpenseSchema = new Schema<TExpense>({
+  expenseName: { type: String, required: true },
+  expenseCategory: { type: String, required: true },
+  expenseAmount: { type: Number, required: true },
+  expenseDate: { type: String, required: true },
+  walletName: { type: String, required: true },
+  walletId: { type: String, required: true },
+  ownerUserId: { type: String, required: true },
+});
+
+export const Expense=model("expenses",ExpenseSchema);

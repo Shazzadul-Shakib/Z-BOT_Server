@@ -30,7 +30,24 @@ const getAllWallet = tryCatch(async (req, res) => {
   }
 });
 
+// Add new expense
+const addNewExpense=tryCatch(async(req,res)=>{
+  const {ownerUserId}=req.params;
+  const result = await financeServices.addNewExpense(ownerUserId,req.body);
+  
+  if(result.success){
+    return SendSuccessResponse(res,{
+      status:200,
+      message:result.message,
+      data:result.result
+    })
+  }
+  
+
+})
+
 export const financeController = {
   addWallet,
   getAllWallet,
+  addNewExpense,
 };
