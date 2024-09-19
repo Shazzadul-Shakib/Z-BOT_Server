@@ -88,6 +88,19 @@ const addNewDebt = tryCatch(async (req, res) => {
   }
 });
 
+// Get all debts
+const getAllDebts = tryCatch(async (req, res) => {
+  // const { ownerUserId } = req.params;
+  // const result = await financeServices.getAllDebts(ownerUserId);
+
+  // if (result.success) {
+  //   return SendSuccessResponse(res, {
+  //     status: 200,
+  //     message: result.message,
+  //     data: result.result,
+  //   });
+  });
+
 export const financeController = {
   addWallet,
   getAllWallet,
@@ -95,4 +108,5 @@ export const financeController = {
   getAllExpenses,
   getAllSavings,
   addNewDebt,
+  getAllDebts
 };

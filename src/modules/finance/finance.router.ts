@@ -9,3 +9,4 @@ financeRouter.post("/expenses/:ownerUserId", financeController.addNewExpense);
 financeRouter.get("/expenses/:ownerUserId", financeController.getAllExpenses);
 financeRouter.get("/savings/:ownerUserId", financeController.getAllSavings);
 financeRouter.post("/debts/:ownerUserId", financeController.addNewDebt);
+financeRouter.get("/debts/:ownerUserId", financeController.getAllDebts);
