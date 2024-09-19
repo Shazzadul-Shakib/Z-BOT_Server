@@ -12,7 +12,7 @@ const addWallet = tryCatch(async (req, res) => {
       message: result.message,
       data: result.result,
     });
-  } 
+  }
 });
 
 // Get all wallet
@@ -41,9 +41,23 @@ const addNewExpense = tryCatch(async (req, res) => {
       message: result.message,
       data: result.result,
     });
-  } 
-  if(!result.success) {
-    return res.send({message:result.message});
+  }
+  if (!result.success) {
+    return res.send({ message: result.message });
+  }
+});
+
+// Get all expenses
+const getAllExpenses = tryCatch(async (req, res) => {
+  const { ownerUserId } = req.params;
+  const result = await financeServices.getAllExpense(ownerUserId);
+
+  if (result.success) {
+    return SendSuccessResponse(res, {
+      status: 200,
+      message: result.message,
+      data: result.result,
+    });
   }
 });
 
@@ -51,4 +65,5 @@ export const financeController = {
   addWallet,
   getAllWallet,
   addNewExpense,
+  getAllExpenses,
 };

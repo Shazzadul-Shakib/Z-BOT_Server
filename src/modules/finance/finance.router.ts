@@ -6,3 +6,4 @@ export const financeRouter=Router();
 financeRouter.post("/wallets",financeController.addWallet);
 financeRouter.get("/wallets/:walletOwnerId", financeController.getAllWallet);
 financeRouter.post("/expenses/:ownerUserId", financeController.addNewExpense);
+financeRouter.get("/expenses/:ownerUserId", financeController.getAllExpenses);
