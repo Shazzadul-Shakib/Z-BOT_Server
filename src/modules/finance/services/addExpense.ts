@@ -1,8 +1,13 @@
 import { TExpense } from "../finance.interface";
-import { Expense, Wallet } from "../finance.model";
+import { Expense, Savings, Wallet } from "../finance.model";
 
 export const addNewExpense = async (ownerUserId: string, payload: TExpense) => {
-  const { walletId, expenseAmount } = payload;
+  const { walletId, expenseAmount, expenseCategory } = payload;
+
+  // add savings expense to savings collection
+  if (expenseCategory === "Savings") {
+    await Savings.create(payload);
+  }
 
   const wallet = await Wallet.findOne({
     walletOwnerId: ownerUserId,

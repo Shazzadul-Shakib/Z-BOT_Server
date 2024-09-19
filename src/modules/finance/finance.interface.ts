@@ -19,3 +19,12 @@ export type TExpense = {
   walletId: string;
   ownerUserId: string;
 };
+
+export type TDebt={
+  _id:Schema.Types.ObjectId;
+  debtOwnerName:string;
+  debtDate:string;
+  debtAmount:number;
+  debtPaid:boolean;
+  ownerUserId:string;
+}

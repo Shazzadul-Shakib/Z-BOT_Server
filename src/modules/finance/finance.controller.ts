@@ -61,9 +61,38 @@ const getAllExpenses = tryCatch(async (req, res) => {
   }
 });
 
+// Get all savings
+const getAllSavings = tryCatch(async (req, res) => {
+  const { ownerUserId } = req.params;
+  const result = await financeServices.getAllSavings(ownerUserId);
+
+  if (result.success) {
+    return SendSuccessResponse(res, {
+      status: 200,
+      message: result.message,
+      data: result.result,
+    });
+  }
+});
+
+// Add new debt
+const addNewDebt = tryCatch(async (req, res) => {
+  const result = await financeServices.addNewDebt(req.body);
+
+  if (result.success) {
+    return SendSuccessResponse(res, {
+      status: 200,
+      message: result.message,
+      data: result.result,
+    });
+  }
+});
+
 export const financeController = {
   addWallet,
   getAllWallet,
   addNewExpense,
   getAllExpenses,
+  getAllSavings,
+  addNewDebt,
 };
