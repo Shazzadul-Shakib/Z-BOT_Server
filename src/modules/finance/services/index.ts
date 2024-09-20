@@ -1,6 +1,7 @@
 import { addNewExpense } from "./addExpense";
 import { addNewDebt } from "./addNewDebt";
 import { addWallet } from "./addWallet";
+import { deleteSingleExpense } from "./deleteSingleExpense";
 import { getAllDebts } from "./getAllDebts";
 import { getAllExpense } from "./getAllExpense";
 import { getAllSavings } from "./getAllSavings";
@@ -12,6 +13,7 @@ export const financeServices = {
   getAllWallet,
   addNewExpense,
   getAllExpense,
+  deleteSingleExpense,
   getAllSavings,
   addNewDebt,
   getAllDebts,

@@ -61,6 +61,20 @@ const getAllExpenses = tryCatch(async (req, res) => {
   }
 });
 
+// Delete single expense
+const deleteSingleExpense = tryCatch(async (req, res) => {
+  const { ownerUserId,expenseId } = req.params;
+  const result = await financeServices.deleteSingleExpense(ownerUserId,expenseId);
+
+  if (result.success) {
+    return SendSuccessResponse(res, {
+      status: 200,
+      message: result.message,
+      data: [],
+    });
+  }
+});
+
 // Get all savings
 const getAllSavings = tryCatch(async (req, res) => {
   const { ownerUserId } = req.params;
@@ -121,6 +135,7 @@ export const financeController = {
   getAllWallet,
   addNewExpense,
   getAllExpenses,
+  deleteSingleExpense,
   getAllSavings,
   addNewDebt,
   getAllDebts,
