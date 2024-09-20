@@ -146,12 +146,17 @@ const updateDebtPaidStatus = tryCatch(async (req, res) => {
     debtId,
     req.body
   );
+});
 
+// Delete single Debt
+const deleteSingleDebt = tryCatch(async (req, res) => {
+  const { ownerUserId, debtId } = req.params;
+  const result = await financeServices.deleteSingledebt(ownerUserId, debtId);
   if (result.success) {
     return SendSuccessResponse(res, {
       status: 200,
       message: result.message,
-      data: result.result,
+      data: [],
     });
   }
 });
@@ -167,4 +172,5 @@ export const financeController = {
   addNewDebt,
   getAllDebts,
   updateDebtPaidStatus,
+  deleteSingleDebt,
 };

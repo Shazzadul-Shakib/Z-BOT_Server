@@ -22,3 +22,7 @@ financeRouter.patch(
   "/debts/:ownerUserId/:debtId",
   financeController.updateDebtPaidStatus
 );
+financeRouter.delete(
+  "/debts/:ownerUserId/:debtId",
+  financeController.deleteSingleDebt
+);
