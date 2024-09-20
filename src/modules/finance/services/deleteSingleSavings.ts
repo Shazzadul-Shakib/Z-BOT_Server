@@ -1,19 +1,20 @@
 import { UpdateWalletPayload } from "../finance.interface";
-import { Expense, Wallet } from "../finance.model";
+import { Savings, Wallet } from "../finance.model";
 
-export const deleteSingleExpense = async (
+export const deleteSingleSavings = async (
   ownerUserId: string,
-  expenseId: string,
+  savingsId: string,
   payload: UpdateWalletPayload
 ) => {
+  console.log(payload);
   const { walletId, addableAmount } = payload;
 
-  const result = await Expense.findOneAndDelete({
+  const result = await Savings.findOneAndDelete({
     ownerUserId,
-    _id: expenseId,
+    _id: savingsId,
   });
 
-  //   if delete expense then amount will be added to wallet again
+//   if delete savings then amount will be added to wallet again
   if (result) {
     await Wallet.findOneAndUpdate({ _id: walletId }, [
       {
@@ -26,5 +27,5 @@ export const deleteSingleExpense = async (
     ]);
   }
 
-  return { success: true, message: "Expense deleted successfully" };
+  return { success: true, message: "Savings deleted successfully" };
 };

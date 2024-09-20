@@ -30,3 +30,8 @@ export type TDebt = {
 };
 
 export type DebtPayload = Pick<{ debtPaid: boolean }, "debtPaid">;
+
+export type UpdateWalletPayload = {
+  walletId: string;
+  addableAmount: number;
+};

@@ -63,8 +63,12 @@ const getAllExpenses = tryCatch(async (req, res) => {
 
 // Delete single expense
 const deleteSingleExpense = tryCatch(async (req, res) => {
-  const { ownerUserId,expenseId } = req.params;
-  const result = await financeServices.deleteSingleExpense(ownerUserId,expenseId);
+  const { ownerUserId, expenseId } = req.params;
+  const result = await financeServices.deleteSingleExpense(
+    ownerUserId,
+    expenseId,
+    req.body
+  );
 
   if (result.success) {
     return SendSuccessResponse(res, {
@@ -85,6 +89,24 @@ const getAllSavings = tryCatch(async (req, res) => {
       status: 200,
       message: result.message,
       data: result.result,
+    });
+  }
+});
+
+// Delete single savings
+const deleteSingleSavings = tryCatch(async (req, res) => {
+  const { ownerUserId, savingsId } = req.params;
+  const result = await financeServices.deleteSingleSavings(
+    ownerUserId,
+    savingsId,
+    req.body
+  );
+
+  if (result.success) {
+    return SendSuccessResponse(res, {
+      status: 200,
+      message: result.message,
+      data: [],
     });
   }
 });
@@ -119,7 +141,11 @@ const getAllDebts = tryCatch(async (req, res) => {
 // Update debt paid status
 const updateDebtPaidStatus = tryCatch(async (req, res) => {
   const { ownerUserId, debtId } = req.params;
-  const result = await financeServices.updateDebtPaidStatus(ownerUserId,debtId,req.body);
+  const result = await financeServices.updateDebtPaidStatus(
+    ownerUserId,
+    debtId,
+    req.body
+  );
 
   if (result.success) {
     return SendSuccessResponse(res, {
@@ -137,6 +163,7 @@ export const financeController = {
   getAllExpenses,
   deleteSingleExpense,
   getAllSavings,
+  deleteSingleSavings,
   addNewDebt,
   getAllDebts,
   updateDebtPaidStatus,
