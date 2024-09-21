@@ -4,6 +4,7 @@ export type TWallet = {
   _id: Schema.Types.ObjectId;
   walletName: string;
   walletBalance: number;
+  initialBalance:number;
   walletOwnerId: string;
 };
 
@@ -19,6 +20,10 @@ export type TExpense = {
   walletId: string;
   ownerUserId: string;
 };
+
+export type ExpensePayload={
+  month:number;
+}
 
 export type TDebt = {
   _id: Schema.Types.ObjectId;

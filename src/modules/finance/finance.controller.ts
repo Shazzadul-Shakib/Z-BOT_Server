@@ -50,7 +50,11 @@ const addNewExpense = tryCatch(async (req, res) => {
 // Get all expenses
 const getAllExpenses = tryCatch(async (req, res) => {
   const { ownerUserId } = req.params;
-  const result = await financeServices.getAllExpense(ownerUserId);
+  const {month}=req.query;
+  const result = await financeServices.getAllExpense(
+    ownerUserId,
+    Number(month)
+  );
 
   if (result.success) {
     return SendSuccessResponse(res, {
