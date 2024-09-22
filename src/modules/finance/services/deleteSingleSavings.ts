@@ -6,7 +6,6 @@ export const deleteSingleSavings = async (
   savingsId: string,
   payload: UpdateWalletPayload
 ) => {
-  console.log(payload);
   const { walletId, addableAmount } = payload;
 
   const result = await Savings.findOneAndDelete({

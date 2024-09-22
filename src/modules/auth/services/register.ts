@@ -13,7 +13,7 @@ export const regiserUserService = async (payload: Omit<TRegister, "_id">) => {
   const mailOptions = {
     from: '"Z-Bot" <your-email@gmail.com>',
     to: ReceiverEmail,
-    subject: "Your OTP Code",
+    subject: `Your OTP Code - ${OTP}`,
     text: `Your OTP code is - ${OTP}`,
   };
 

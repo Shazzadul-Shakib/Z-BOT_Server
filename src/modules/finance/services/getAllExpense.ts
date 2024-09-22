@@ -14,7 +14,7 @@ export const getAllExpense = async (ownerUserId: string, month?: number) => {
   const startOfMonth = moment()
     .year(targetYear)
     .month(targetMonth - 1)
-    .startOf("month"); // month is 0-based
+    .startOf("month"); 
   const endOfMonth = moment()
     .year(targetYear)
     .month(targetMonth - 1)

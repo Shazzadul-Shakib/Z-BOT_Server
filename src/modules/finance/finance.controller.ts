@@ -19,6 +19,12 @@ const addWallet = tryCatch(async (req, res) => {
 
 const getAllWallet = tryCatch(async (req, res) => {
   const { walletOwnerId } = req.params;
+
+  //Prevent users from accessing data belonging to other users.
+  if (walletOwnerId !== req?.user?.userId) {
+    return res.status(403).json({ message: "Forbidden access" });
+  }
+
   const result = await financeServices.getAllWallet(walletOwnerId);
 
   if (result.success) {
@@ -50,7 +56,13 @@ const addNewExpense = tryCatch(async (req, res) => {
 // Get all expenses
 const getAllExpenses = tryCatch(async (req, res) => {
   const { ownerUserId } = req.params;
-  const {month}=req.query;
+  const { month } = req.query;
+
+  //Prevent users from accessing data belonging to other users.
+  if (ownerUserId !== req?.user?.userId) {
+    return res.status(403).json({ message: "Forbidden access" });
+  }
+
   const result = await financeServices.getAllExpense(
     ownerUserId,
     Number(month)
@@ -86,6 +98,12 @@ const deleteSingleExpense = tryCatch(async (req, res) => {
 // Get all savings
 const getAllSavings = tryCatch(async (req, res) => {
   const { ownerUserId } = req.params;
+
+  //Prevent users from accessing data belonging to other users.
+  if (ownerUserId !== req?.user?.userId) {
+    return res.status(403).json({ message: "Forbidden access" });
+  }
+
   const result = await financeServices.getAllSavings(ownerUserId);
 
   if (result.success) {
@@ -131,6 +149,12 @@ const addNewDebt = tryCatch(async (req, res) => {
 // Get all debts
 const getAllDebts = tryCatch(async (req, res) => {
   const { ownerUserId } = req.params;
+
+  //Prevent users from accessing data belonging to other users.
+  if (ownerUserId !== req?.user?.userId) {
+    return res.status(403).json({ message: "Forbidden access" });
+  }
+  
   const result = await financeServices.getAllDebts(ownerUserId);
 
   if (result.success) {
