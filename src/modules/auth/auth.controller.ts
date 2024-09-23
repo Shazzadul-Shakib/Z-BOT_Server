@@ -32,8 +32,8 @@ const loginUser = tryCatch(async (req, res) => {
   if (result.success) {
     res.cookie("access_token", result.token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: process.env.NODE_ENV === "production" ? true : false,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
     });
 
     return SendSuccessResponse(res, {

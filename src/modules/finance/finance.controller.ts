@@ -174,6 +174,13 @@ const updateDebtPaidStatus = tryCatch(async (req, res) => {
     debtId,
     req.body
   );
+   if (result.success) {
+     return SendSuccessResponse(res, {
+       status: 200,
+       message: result.message,
+       data: [],
+     });
+   }
 });
 
 // Delete single Debt
