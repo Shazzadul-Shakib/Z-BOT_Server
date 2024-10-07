@@ -4,11 +4,15 @@ export type TWallet = {
   _id: Schema.Types.ObjectId;
   walletName: string;
   walletBalance: number;
-  initialBalance:number;
+  initialBalance: number;
   walletOwnerId: string;
 };
 
 export type WalletPayload = Pick<{ walletOwnerId: string }, "walletOwnerId">;
+export type DeleteWalletPayload = Pick<
+  { walletOwnerId: string; _id: string },
+  "walletOwnerId" | "_id"
+>;
 
 export type TExpense = {
   _id: Schema.Types.ObjectId;
@@ -21,9 +25,9 @@ export type TExpense = {
   ownerUserId: string;
 };
 
-export type ExpensePayload={
-  month:number;
-}
+export type ExpensePayload = {
+  month: number;
+};
 
 export type TDebt = {
   _id: Schema.Types.ObjectId;

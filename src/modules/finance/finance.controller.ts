@@ -16,7 +16,6 @@ const addWallet = tryCatch(async (req, res) => {
 });
 
 // Get all wallet
-
 const getAllWallet = tryCatch(async (req, res) => {
   const { walletOwnerId } = req.params;
 
@@ -35,6 +34,20 @@ const getAllWallet = tryCatch(async (req, res) => {
     });
   }
 });
+
+// Delete single wallet
+const deleteWallet=tryCatch(async(req,res)=>{
+  const { walletOwnerId, walletId } = req.params;
+  const result = await financeServices.deleteWallet(walletOwnerId, walletId);
+
+  if (result.success) {
+    return SendSuccessResponse(res, {
+      status: 200,
+      message: result.message,
+      data: result.result,
+    });
+  }
+})
 
 // Add new expense
 const addNewExpense = tryCatch(async (req, res) => {
@@ -199,6 +212,7 @@ const deleteSingleDebt = tryCatch(async (req, res) => {
 export const financeController = {
   addWallet,
   getAllWallet,
+  deleteWallet,
   addNewExpense,
   getAllExpenses,
   deleteSingleExpense,

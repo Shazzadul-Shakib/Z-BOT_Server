@@ -6,6 +6,8 @@ export const financeRouter = Router();
 
 financeRouter.post("/wallets", financeController.addWallet);
 financeRouter.get("/wallets/:walletOwnerId", verifyToken , financeController.getAllWallet);
+financeRouter.delete("/wallets/:walletOwnerId/:walletId",financeController.deleteWallet);
+
 financeRouter.post("/expenses/:ownerUserId", financeController.addNewExpense);
 financeRouter.get("/expenses/:ownerUserId", verifyToken , financeController.getAllExpenses);
 financeRouter.delete(
